@@ -89,7 +89,6 @@ p{
 .menu ul li {
     margin: 10px 0;
     cursor: pointer;
-    transition: transform 1s ease-in-out;
 }
 
 .menu ul.horizontal li {
