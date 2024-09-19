@@ -1,0 +1,135 @@
+body, html {
+    background-color: black;
+    color: white;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5vw;
+    overflow: hidden; /* Zakáže scrollování */
+    display: flex;
+    justify-content: center; /* Horizontální zarovnání */
+    align-items: center; /* Vertikální zarovnání */
+    height: 100%; /* Zajistí, že body a html mají plnou výšku viewportu */
+    margin: 0;
+    flex-direction: column;
+}
+
+p{
+    font-weight: 200;
+    font-size: 4vw;
+    width: 40vw;
+}
+
+.logo {
+    width: 40%;
+    padding-left: 5%;
+    transition: opacity 1s ease-in-out, transform 1s ease;
+    animation: slideDown 0.5s ease-out;
+}
+
+.menu {
+    margin-top: 2%;
+    text-align: center;
+    transition: top 1s ease-in-out, transform 1s ease-in-out; /* Přechod pro posun menu nahoru */
+}
+
+@keyframes slideDown {
+    from {
+      transform: translateY(-35vh); /* Začíná mimo obrazovku nahoře */
+    }
+    to {
+      transform: translateY(0vh); /* Konečná pozice */
+    }
+}
+
+@keyframes slideUp {
+    from {
+      transform: translateY(0vh);
+    }
+    to {
+      transform: translateY(-35vh);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Výchozí nastavení pro vertikální zobrazení */
+    flex-direction: column;
+    animation: slideDown 0.5s ease-out, fadeIn 0.5s ease-out;
+    transition: transform 1s ease-in-out; /* Přechod mezi vertikálním a horizontálním zobrazením */
+}
+
+.menu ul.horizontal {
+    animation: slideUp 0.5s ease-in-out;
+    flex-direction: row;
+    transform: translateY(-35vh);
+    margin-top: 50px;
+}
+
+.menu ul li {
+    margin: 10px 0;
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+}
+
+.menu ul.horizontal li {
+    margin: 0 1vw; /* Mezera mezi položkami v horizontálním zobrazení */
+}
+
+.menu ul li:hover {
+    color: red; /* Změní barvu při najetí myší */
+}
+
+.fade {
+    animation: slideUp 0.5s ease-in-out, fadeOut 0.5s ease-out;
+    transform: translateY(-35vh); /* Konečná pozice */
+    opacity: 0;
+}
+
+.menu ul.back{
+    animation: slideDown 0.5s ease-out;
+    flex-direction: column;
+    transform: translateY(20vh);
+}
+
+.fadeBack{
+    animation: slideDown 0.5s ease-out, fadeIn 0.5s ease-out;
+    transform: translateY(20vh);
+}
+
+.content{
+    
+}
+
+.startHidden{
+    display:none;
+}
+
+.unhide{
+    display:block;
+}
+
+.backImg{
+    width: 10vw;
+}
+
