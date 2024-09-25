@@ -4,8 +4,7 @@ body, html {
     font-family: 'Kumbh Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 5vw;
-    overflow: hidden; /* Zakáže scrollování */
+    font-size: 3vw;
     display: flex;
     justify-content: center; /* Horizontální zarovnání */
     align-items: center; /* Vertikální zarovnání */
@@ -14,121 +13,149 @@ body, html {
     flex-direction: column;
 }
 
+@media (max-width: 600px) {
+    body{
+        font-size: 5vw;
+    }
+}
+
 p{
+    margin: 0;
     font-weight: 200;
-    font-size: 4vw;
-    width: 40vw;
 }
 
 .logo {
-    width: 40%;
-    padding-left: 5%;
-    transition: opacity 1s ease-in-out, transform 1s ease;
+    vertical-align: middle;
+    width: 45%;
+    margin-top: 5%;
     animation: slideDown 0.5s ease-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .menu {
-    margin-top: 2%;
     text-align: center;
-    transition: top 1s ease-in-out, transform 1s ease-in-out; /* Přechod pro posun menu nahoru */
+    display: flex;
+    justify-self: center;
+    animation: slideDown 0.5s ease-out;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+    background-color: black;
+}
+
+.menu ul{
+    padding: 0;
+    margin: 0;
 }
 
 @keyframes slideDown {
     from {
-      transform: translateY(-35vh); /* Začíná mimo obrazovku nahoře */
+      transform: translateY(-80%); /* Začíná mimo obrazovku nahoře */
     }
     to {
-      transform: translateY(0vh); /* Konečná pozice */
+      transform: translateY(0%); /* Konečná pozice */
     }
 }
 
 @keyframes slideUp {
     from {
-      transform: translateY(0vh);
+      transform: translateY(50vh); /* Začíná mimo obrazovku nahoře */
     }
     to {
-      transform: translateY(-35vh);
+      transform: translateY(0%); /* Konečná pozice */
     }
 }
 
-@keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+.menu.up{
+    animation: slideUp 0.5s ease-in-out;
+    transition: top 0.5s ease-in-out, position 0.5s ease-in-out;
+    position: fixed;
+    top: 0;
+    border-color: red;
+    border-style: solid;
+    border-top: 1px;
+    border-radius: 3vw;
 }
 
-@keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+.menu.up ul li{
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.menu ul {
-    list-style-type: none;
+.menu.up ul {
+    display: flex;
+    justify-content: center;
     padding: 0;
     margin: 0;
-    display: flex; /* Výchozí nastavení pro vertikální zobrazení */
-    flex-direction: column;
-    animation: slideDown 0.5s ease-out, fadeIn 0.5s ease-out;
-    transition: transform 1s ease-in-out; /* Přechod mezi vertikálním a horizontálním zobrazením */
-}
-
-.menu ul.horizontal {
-    animation: slideUp 0.5s ease-in-out;
-    flex-direction: row;
-    transform: translateY(-35vh);
-    margin-top: 50px;
 }
 
 .menu ul li {
-    margin: 10px 0;
+    margin: 10px 1vw;
     cursor: pointer;
-}
-
-.menu ul.horizontal li {
-    margin: 0 1vw; /* Mezera mezi položkami v horizontálním zobrazení */
+    list-style-type: none;
 }
 
 .menu ul li:hover {
-    color: red; /* Změní barvu při najetí myší */
+    color: red;
+}
+
+@keyframes slideImgUp {
+    from {
+      transform: translateY(0); /* Začíná mimo obrazovku nahoře */
+    }
+    to {
+      transform: translateY(-50vh); /* Konečná pozice */
+    }
 }
 
 .fade {
-    animation: slideUp 0.5s ease-in-out, fadeOut 0.5s ease-out;
-    transform: translateY(-35vh); /* Konečná pozice */
+    animation: slideImgUp 0.5s ease-in-out;
     opacity: 0;
 }
 
-.menu ul.back{
-    animation: slideDown 0.5s ease-out;
-    flex-direction: column;
-    transform: translateY(20vh);
-}
-
-.fadeBack{
-    animation: slideDown 0.5s ease-out, fadeIn 0.5s ease-out;
-    transform: translateY(20vh);
+@keyframes contentUp {
+    from {
+      transform: translateY(35%); /* Začíná mimo obrazovku nahoře */
+    }
+    to {
+      transform: translateY(-35%); /* Konečná pozice */
+    }
 }
 
 .content{
-    
+    width: 80%;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    animation: slideDown 0.5s ease-in-out;
 }
 
-.startHidden{
-    display:none;
-}
-
-.unhide{
-    display:block;
+.contentIn{
+    transition: opacity 1s ease-in;
+    animation: slideUp 0.5s ease-in-out;
+    opacity: 1;
 }
 
 .backImg{
-    width: 10vw;
+    vertical-align: middle;
+    height: 1em;
+    width: 1em;
+    background-image: url('Obrazky/backF.png');
+    background-size: cover;
+}
+
+.backImg:hover{
+    background-image: url('Obrazky/backT.png');
+}
+
+.responsive-img {
+    max-width: 100%; /* Obrázek se přizpůsobí šířce buňky */
+    max-height: 100%; /* Maximální výška obrázku */
+    height: auto; /* Zachovává poměr stran */
+    width: auto; /* Zachovává poměr stran */
+    margin: auto; /* Vycentrování obrázku (pokud je to potřeba) */
+    align-items: center;
+    object-fit: cover;
+}
+
+#photoContent{
 }
 
