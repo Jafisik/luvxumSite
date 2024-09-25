@@ -14,33 +14,32 @@
             <li id="luvxum">luvxum</li>
             <li id="photo">photography</li>
             <li id="illu">illustrating</li>
-            <li id="back"><img class="backImg"></li>
+            <li id="back"><img class="backImg" src="Obrazky/back/backF.png" id="backImg"></li>
+            <script>
+                const backImage = document.getElementById('backImg');
+                backImage.addEventListener('mouseover', function() {
+                    backImage.src = 'Obrazky/back/backT.png'; // Změní obrázek při hoveru
+                });
+                backImage.addEventListener('mouseout', function() {
+                    backImage.src = 'Obrazky/back/backF.png'; // Vrátí původní obrázek
+                });
+            </script>
         </ul>
     </div>
 
     <div id="content" class="content">
-        <div id="luvxumContent">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate mi sit amet mauris commodo. Ac felis donec et odio. Natoque penatibus et magnis dis parturient. Ultrices sagittis orci a scelerisque purus semper eget. Gravida in fermentum et sollicitudin ac. Mattis rhoncus urna neque viverra. Sodales ut etiam sit amet nisl.</p>
+        <div id="luvxumContent" class="luvxumContent">
+            <p><br>Čauky já jsem Luvxum
+            <a href="https://www.instagram.com/luvxum/" target="_blank"> Instagram</a></p>
             
         </div>
 
-        <div id="photoContent">
-            <table>
-                <tr>
-                    <td><img class="responsive-img" src="Obrazky/budovy/budova1.png"></td>
-                    <td><img class="responsive-img" src="Obrazky/budovy/budova2.png"></td>
-                    <td><img class="responsive-img" src="Obrazky/budovy/budova3.png"></td>
-                </tr>
-                <tr>
-                    <td><img class="responsive-img" src="Obrazky/budovy/budova4.png"></td>
-                    <td><img class="responsive-img" src="Obrazky/budovy/budova5.png"></td>
-                    <td><img class="responsive-img" src="Obrazky/budovy/budova6.png"></td>
-                </tr>
-            </table>
+        <div id="photoContent" class="photoContent">
+
         </div>
 
-        <div id="illuContent">
-            <p>lorem illustration</p>
+        <div id="illuContent" class="illuContent">
+
         </div>
     </div>
     <script src="script.js"></script>

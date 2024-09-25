@@ -55,6 +55,7 @@ luvxum.addEventListener('click', () => {
     luvxumContent.style.display = 'block';
     photoContent.style.display = 'none';
     illuContent.style.display = 'none';
+    content.style.columns = 'auto';
 });
 photo.addEventListener('click', () => {
     luvxum.style.color = 'white';
@@ -64,6 +65,7 @@ photo.addEventListener('click', () => {
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'block';
     illuContent.style.display = 'none';
+    content.style.columns = '20vw';
 });
 illu.addEventListener('click', () => {
     luvxum.style.color = 'white';
@@ -73,4 +75,65 @@ illu.addEventListener('click', () => {
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'none';
     illuContent.style.display = 'block';
+    content.style.columns = '20vw';v
 });
+
+// Funkce na kontrolu, zda obrázek existuje
+function imageExists(url, callback) {
+    const img = new Image();
+    img.onload = () => callback(true);
+    img.onerror = () => callback(false);
+    img.src = url;
+}
+
+function loadImages(path, contentClass, i = 1) {
+    const parts = path.split('/'); // Rozdělí cestu na části podle '/'
+    const folder = parts.slice(0, parts.length - 1).join('/') + '/'; // Složka
+    const filename = parts[parts.length - 1]; // Celý název souboru (např. 'budova1.png')
+    
+    // Regulární výraz pro oddělení prefixu a čísla
+    const match = filename.match(/([^\d]+)(\d+)\.(.+)/);
+    
+    if (!match) {
+        console.error('Název souboru neodpovídá očekávanému formátu.');
+        return; // Konec, pokud název nesplňuje formát
+    }
+
+    const prefix = match[1]; // Prefix (např. 'budova')
+    const extension = match[3]; // Přípona (např. 'png')
+
+    const imageUrl = `${folder}${prefix}${i}.${extension}`; // Vytvoří URL pro obrázek
+
+    imageExists(imageUrl, function(exists) {
+        if (exists) {
+            const imgElement = document.createElement('img');
+            imgElement.src = imageUrl;
+            imgElement.alt = `${prefix}${i}`; // Nastaví alt text
+            document.querySelector('.' + contentClass).appendChild(imgElement);
+            i++; // Zvyší počítadlo a zkusí další obrázek
+
+            loadImages(path, contentClass, i); // Správné volání funkce
+        } else {
+            console.log(`Obrázek ${imageUrl} neexistuje. Konec načítání obrázků.`);
+        }
+    });
+}
+
+// Přidáme event listener pro obrázek "backImg"
+document.addEventListener('DOMContentLoaded', function() {
+    const backImage = document.getElementById('backImg');
+    backImage.addEventListener('mouseover', function() {
+        backImage.src = 'Obrazky/back/backT.png'; // Změní obrázek při hoveru
+    });
+    backImage.addEventListener('mouseout', function() {
+        backImage.src = 'Obrazky/back/backF.png'; // Vrátí původní obrázek
+    });
+
+    // Volání funkce pro načítání obrázků
+    loadImages('Obrazky/budovy/budova1.png', 'photoContent');
+    loadImages('Obrazky/ilustrace/illu1.png', 'illuContent');
+    loadImages('Obrazky/budovy/budova1.png', 'photoContent');
+    loadImages('Obrazky/ilustrace/illu1.png', 'illuContent');
+});
+
+

@@ -4,19 +4,18 @@ body, html {
     font-family: 'Kumbh Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 3vw;
+    font-size: 2vw;
     display: flex;
-    justify-content: center; /* Horizontální zarovnání */
+    justify-content: flex-start;
     align-items: center; /* Vertikální zarovnání */
     height: 100%; /* Zajistí, že body a html mají plnou výšku viewportu */
     margin: 0;
     flex-direction: column;
 }
 
-@media (max-width: 600px) {
-    body{
-        font-size: 5vw;
-    }
+a{
+    text-decoration: none;
+    color: red;
 }
 
 p{
@@ -33,14 +32,16 @@ p{
 }
 
 .menu {
+    font-size: 3vw;
     text-align: center;
     display: flex;
     justify-self: center;
     animation: slideDown 0.5s ease-out;
     transition: transform 0.5s ease-in-out;
-    z-index: 1;
     background-color: black;
 }
+
+
 
 .menu ul{
     padding: 0;
@@ -70,10 +71,10 @@ p{
     transition: top 0.5s ease-in-out, position 0.5s ease-in-out;
     position: fixed;
     top: 0;
-    border-color: red;
-    border-style: solid;
-    border-top: 1px;
-    border-radius: 3vw;
+    z-index: 2;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .menu.up ul li{
@@ -121,41 +122,93 @@ p{
     }
 }
 
+::-webkit-scrollbar {
+    width: 6px; /* Šířka scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #000000; /* Barva pozadí scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff0000; /* Barva "thumb" (posuvník) */
+    border-radius: 10px; /* Zaoblení rohů */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #750000; /* Barva "thumb" při hoveru */
+}
+
 .content{
     width: 80%;
+    overflow-y: auto; /* Pokud je obsah delší, přidá scroll */
+    z-index: 1; /* Nižší než menu */
     opacity: 0;
+    padding-top: 8%;
+    padding-bottom: 4%;
     transition: opacity 1s ease-in;
     animation: slideDown 0.5s ease-in-out;
+    column-gap: 8px;
 }
+
+@media (max-width: 600px) {
+    .menu{
+        font-size: 5vw;
+    }
+    .content{
+        padding-top: 15%;
+    }
+} 
 
 .contentIn{
     transition: opacity 1s ease-in;
     animation: slideUp 0.5s ease-in-out;
     opacity: 1;
+    columns: 20vw;
 }
 
 .backImg{
     vertical-align: middle;
     height: 1em;
     width: 1em;
-    background-image: url('Obrazky/backF.png');
+    background-image: url('Obrazky/back/backF.png');
     background-size: cover;
 }
 
 .backImg:hover{
-    background-image: url('Obrazky/backT.png');
+    background-image: url('Obrazky/back/backT.png');
+    background-color: blue;
 }
 
-.responsive-img {
-    max-width: 100%; /* Obrázek se přizpůsobí šířce buňky */
-    max-height: 100%; /* Maximální výška obrázku */
-    height: auto; /* Zachovává poměr stran */
-    width: auto; /* Zachovává poměr stran */
-    margin: auto; /* Vycentrování obrázku (pokud je to potřeba) */
-    align-items: center;
-    object-fit: cover;
+.photoContent img{
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
 }
 
-#photoContent{
+.column {
+    flex: 50%;
+    padding: 0 4px;
 }
 
+.photoContent{
+    flex: 50%;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.illuContent{
+    flex: 50%;
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+.illuContent img{
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.luvxumContent{
+    margin-top: 6vw;
+}
