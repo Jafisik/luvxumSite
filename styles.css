@@ -4,7 +4,7 @@ body, html {
     font-family: 'Kumbh Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 2vw;
+    font-size: 3vw;
     display: flex;
     justify-content: flex-start;
     align-items: center; /* Vertikální zarovnání */
@@ -149,6 +149,8 @@ p{
     transition: opacity 1s ease-in;
     animation: slideDown 0.5s ease-in-out;
     column-gap: 8px;
+    overflow-y: auto; /* Povolit vertikální scrollování */
+    max-width: 80vw; /* Nastavte maximální výšku pro scrollování */
 }
 
 @media (max-width: 600px) {
@@ -157,6 +159,9 @@ p{
     }
     .content{
         padding-top: 15%;
+    }
+    body{
+        font-size: 5vw;
     }
 } 
 
@@ -210,4 +215,8 @@ p{
 
 .luvxumContent{
     margin-top: 6vw;
+}
+
+.redText{
+    color: #ff0000;
 }

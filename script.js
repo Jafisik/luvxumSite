@@ -38,19 +38,19 @@ back.addEventListener('click', () => {
     menu.classList.remove('up');
     back.classList.remove('back');
     content.classList.remove('contentIn');
-    luvxum.style.color = 'white';
-    photo.style.color = 'white';
-    illu.style.color = 'white';
     back.style.display = 'none';
+    luvxum.classList.remove('redText');
+    photo.classList.remove('redText');
+    illu.classList.remove('redText');
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'none';
     illuContent.style.display = 'none';
 });
 
 luvxum.addEventListener('click', () => {
-    luvxum.style.color = 'red';
-    photo.style.color = 'white';
-    illu.style.color = 'white';
+    luvxum.classList.add('redText');
+    photo.classList.remove('redText');
+    illu.classList.remove('redText');
     content.style.display = 'block';
     luvxumContent.style.display = 'block';
     photoContent.style.display = 'none';
@@ -58,9 +58,9 @@ luvxum.addEventListener('click', () => {
     content.style.columns = 'auto';
 });
 photo.addEventListener('click', () => {
-    luvxum.style.color = 'white';
-    photo.style.color = 'red';
-    illu.style.color = 'white';
+    luvxum.classList.remove('redText');
+    photo.classList.add('redText');
+    illu.classList.remove('redText');
     content.style.display = 'block';
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'block';
@@ -68,9 +68,9 @@ photo.addEventListener('click', () => {
     content.style.columns = '300px';
 });
 illu.addEventListener('click', () => {
-    luvxum.style.color = 'white';
-    photo.style.color = 'white';
-    illu.style.color = 'red';
+    luvxum.classList.remove('redText');
+    photo.classList.remove('redText');
+    illu.classList.add('redText');
     content.style.display = 'block';
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'none';
