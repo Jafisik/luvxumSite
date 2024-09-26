@@ -26,13 +26,13 @@ p{
 .logo {
     vertical-align: middle;
     width: 45%;
-    margin-top: 5%;
+    margin-top: 20vh;
     animation: slideDown 0.5s ease-out;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .menu {
-    font-size: 3vw;
+    font-size: 4vw;
     text-align: center;
     display: flex;
     justify-self: center;
@@ -153,7 +153,7 @@ p{
 
 @media (max-width: 600px) {
     .menu{
-        font-size: 5vw;
+        font-size: 6vw;
     }
     .content{
         padding-top: 15%;
@@ -164,7 +164,6 @@ p{
     transition: opacity 1s ease-in;
     animation: slideUp 0.5s ease-in-out;
     opacity: 1;
-    columns: 20vw;
 }
 
 .backImg{

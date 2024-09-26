@@ -65,7 +65,7 @@ photo.addEventListener('click', () => {
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'block';
     illuContent.style.display = 'none';
-    content.style.columns = '20vw';
+    content.style.columns = '300px';
 });
 illu.addEventListener('click', () => {
     luvxum.style.color = 'white';
@@ -75,7 +75,7 @@ illu.addEventListener('click', () => {
     luvxumContent.style.display = 'none';
     photoContent.style.display = 'none';
     illuContent.style.display = 'block';
-    content.style.columns = '20vw';v
+    content.style.columns = '300px';v
 });
 
 // Funkce na kontrolu, zda obrázek existuje
@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     backImage.addEventListener('mouseout', function() {
         backImage.src = 'Obrazky/back/backF.png'; // Vrátí původní obrázek
     });
+    content.style.display = 'none';
 
     // Volání funkce pro načítání obrázků
     loadImages('Obrazky/budovy/budova1.png', 'photoContent');
