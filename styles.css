@@ -142,7 +142,7 @@ p{
 .content{
     width: 80%;
     overflow-y: auto; /* Pokud je obsah delší, přidá scroll */
-    overflow-x: hidden;
+    
     z-index: 1; /* Nižší než menu */
     opacity: 0;
     padding-top: 8%;
